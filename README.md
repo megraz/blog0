@@ -64,9 +64,13 @@ public function up()
 Step 5: Add Resource Route
 we need to add resource route for article crud application
 open your routes/web.php file and add following route
+toutes mes routes sont ici (dossier des views ex'articles' en 1 et en 2 dans app, les controllers 'ArticleController')
 
 routes/web.php
 Route::resource('articles','ArticleController');
+Route::resource('itemCRUD','ItemCRUDController');
+
+
 
 Step 6: Create ArticleController
 create new controller as ArticleController
@@ -96,3 +100,27 @@ Step 7: Create Blade Files in ressources/views
 Step 8: php artisan serve
 
 Step 9: http://localhost:8000/articles
+
+NB. faire attention lors des Migrations
+En cas d'erreur à la génération. Du type : Key too long error:
+SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 7
+67 bytes (SQL: alter table users add unique users_email_unique (email))
+donc dans:
+app/providers/AppServiceProvider.php
+
+rajouter:
+
+use Illuminate\Support\Facades\Schema;
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+
+utiliser la commande: php artisan migrate:fresh
+et php artisan migrate:fresh --seed
+puis vérifier la DB et relancer le serveur avec php artisan serve
+
+MAIS AUSSI dans le dossier migrations
+lorsque l'on a email lui rajouter une longueur de 191
+ex: $table->string('email', 191)->unique();
