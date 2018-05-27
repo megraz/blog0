@@ -28,12 +28,13 @@ class ItemCRUDController extends Controller
 
     {
 
-        $items = Item::orderBy('id','DESC')->paginate(5);
+        $items = Item::orderBy('id','DESC')->paginate(5);//pr la pagination on change le chiffre de paginate
+        //ici au bout de 5 messages on aura une nvlle page et une pagination va apparaître 
 
         return view('ItemCRUD.index',compact('items'))
 
-            ->with('i', ($request->input('page', 1) - 1) * 5);
-
+            ->with('i', ($request->input('page', 1) - 1) * 5); // pr la pagination après avoir changer le chiffre
+            //du haut on peut aussi changer le dernier chiffre après l'* ex. ici le 5
     }
 
 

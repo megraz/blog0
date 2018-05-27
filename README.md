@@ -126,3 +126,5 @@ puis vérifier la DB et relancer le serveur avec php artisan serve
 MAIS AUSSI dans le dossier migrations
 lorsque l'on a email lui rajouter une longueur de 191
 ex: $table->string('email', 191)->unique();
+
+la pagination se fait dans les controllers
