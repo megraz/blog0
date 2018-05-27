@@ -101,6 +101,8 @@ Step 8: php artisan serve
 
 Step 9: http://localhost:8000/articles
 
+http://localhost:8000/itemCRUD/
+
 NB. faire attention lors des Migrations
 En cas d'erreur à la génération. Du type : Key too long error:
 SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 7
